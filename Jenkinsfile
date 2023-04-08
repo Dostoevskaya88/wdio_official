@@ -9,7 +9,7 @@ pipeline {
         
         steps {
           sh 'npm install'
-          sh 'npm run gettingStarted'
+          sh 'npm test'
         }
       }
     }
