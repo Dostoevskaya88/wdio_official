@@ -5,12 +5,16 @@ pipeline {
       nodejs '19.8.1'
     }
     stages {
-      stage("build") {
-        
-        steps {
-          sh 'npm install'
-          sh 'npm test'
-        }
+    stage('Install dependencies') {
+      steps {
+        sh 'npm install'
       }
+    }
+     
+    stage('Test') {
+      steps {
+         sh 'npm test'
+      }
+    }   
     }
   }
