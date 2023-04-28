@@ -7,13 +7,20 @@ pipeline {
     stages {
     stage('Install dependencies') {
       steps {
-        sh 'npm version'
+        sh 'npm install'
       }
     }
-         stage('Allure test') {
+     
+    stage('Test') {
+      steps {
+         sh 'npm run getting-started'
+      }
+    }  
+               stage('Allure test') {
       steps {
      allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
       }
        }
     }
   }
+
