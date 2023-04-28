@@ -10,6 +10,10 @@ pipeline {
         sh 'npm version'
       }
     }
-     
+         stage('Allure test') {
+      steps {
+     allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+      }
+       }
     }
   }
