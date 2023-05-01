@@ -1,26 +1,17 @@
 pipeline {
-  
-  agent any 
-    tools {
-      nodejs '19.8.1'
-    }
-    stages {
-    stage('Install dependencies') {
+  agent any
+  environment {
+    CHROME_PATH=‘/applications/google-chrome.app/contents/macos/google-chrome’
+  }
+  stages {
+    stage('Build') {
       steps {
-        sh 'npm install'
+        // Set CHROME_PATH before running Chrome-related commands
+        withEnv(['CHROME_PATH=' + CHROME_PATH]) {
+          sh 'google-chrome --version'
+          // Other Chrome-related commands
+        }
       }
-    }
-     
-    stage('Test') {
-      steps {
-         sh 'npm run getting-started'
-      }
-    }  
-               stage('Allure test') {
-      steps {
-     allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-      }
-       }
     }
   }
-
+}
