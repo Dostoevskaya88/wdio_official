@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    CHROME_PATH=‘/applications/google-chrome.app/contents/macos/google-chrome’
+    CHROME_PATH=‘/opt/google/chrome/google-chrome’
   }
   stages {
     stage('Build') {
