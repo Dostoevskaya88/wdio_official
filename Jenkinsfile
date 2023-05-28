@@ -13,7 +13,7 @@ pipeline {
      
     stage('Test') {
       steps {
-        sh 'npx wdio wdio.conf.js'
+        sh 'npm run getting-started'
       }
     }   
     }
