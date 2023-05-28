@@ -4,7 +4,7 @@ export const config = {
     // Runner Configuration
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
-    runner: hostname: 'selenium-hub', port: 4444, path: '/',
+    runner: 'local',
     
     //
     // ==================
@@ -51,18 +51,12 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-capabilities: [{
-        maxInstances: 1,
+    capabilities: [{
+        maxInstances: 5,
         browserName: 'chrome',
         acceptInsecureCerts: true,
         'goog:chromeOptions': {
-            args: [
-                '--no-sandbox',
-                '--disable-infobars',
-                '--headless',
-                '--disable-gpu',
-                '--window-size=1440,735'
-            ],
+            args: process.env.CI ? ['headless', 'disable-gpu'] : []
         }
     }],
     //
