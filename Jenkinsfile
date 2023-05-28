@@ -1,17 +1,20 @@
 pipeline {
-  agent any
-  environment {
-    CHROME_PATH=‘/opt/google/chrome/google-chrome’
-  }
-  stages {
-    stage('Build') {
+  
+  agent any 
+    tools {
+      nodejs '19.8.1'
+    }
+    stages {
+    stage('Install dependencies') {
       steps {
-        // Set CHROME_PATH before running Chrome-related commands
-        withEnv(['CHROME_PATH=' + CHROME_PATH]) {
-          sh 'google-chrome --version'
-          // Other Chrome-related commands
-        }
+        sh 'npm version'
       }
     }
+     
+    stage('Test') {
+      steps {
+         sh 'npm run getting-started'
+      }
+    }   
+    }
   }
-}
