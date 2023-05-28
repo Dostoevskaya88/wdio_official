@@ -8,7 +8,8 @@ pipeline {
     stage('Install dependencies') {
       steps {
         sh 'npm install'
-        ah 'npm init wdio@latest ./test'
+        sh 'npx wdio wdio.conf.js'
+        sh 'npm init wdio@latest ./test'
       }
     }
      
