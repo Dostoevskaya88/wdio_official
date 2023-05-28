@@ -2,7 +2,7 @@ pipeline {
   
   agent any 
     environment {
-    CHROME_PATH=‘/opt/google/chrome/google-chrome’
+    CHROME_PATH='/opt/google/chrome/google-chrome'
   }
     tools {
       nodejs '19.8.1'
