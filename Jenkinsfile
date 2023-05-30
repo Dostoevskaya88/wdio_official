@@ -10,12 +10,18 @@ pipeline {
     stages {
           stage('Build') {
       steps {
+            script {
+              def chromedriverPath = "/usr/local/bin/chromedriver"
+              sh "export PATH=$chromedriverPath:$PATH"
+              sh 'chromedriver --version'
+                }
         // Set CHROME_PATH before running Chrome-related commands
         withEnv(['CHROME_PATH=' + CHROME_PATH]) {
           sh 'google-chrome --version'
           // Other Chrome-related commands
         }
       }
+            
     }
     stage('Install dependencies') {
       steps {
